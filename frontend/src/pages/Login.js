@@ -79,6 +79,8 @@ const Login = () => {
         password,
       }),
     });
+
+    console.log(response.status)
     // If bad response
     if (response.status !== 200) {
         setPasswordError('Incorrect username or password!');
