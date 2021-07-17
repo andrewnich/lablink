@@ -7,7 +7,9 @@ import Button from '@material-ui/core/Button';
 import { useHistory, Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
-  logo: {},
+  logo: {
+    textAlign: 'center'
+  },
 
   signIn: {
     display: 'block',
@@ -64,7 +66,7 @@ const Login = () => {
       <p className={classes.logo}>LabLink</p>
       <form>
         <div className={classes.signInContainer}>
-          <p className={classes.signIn}>Sign In</p>
+          <p className={classes.signIn}>Log In</p>
 
           <TextField
             className={classes.textEntry}
@@ -93,6 +95,8 @@ const Login = () => {
           >
             Log In
           </Button>
+
+          <p>Don't have an account?</p>
 
           <Button
             className={classes.button}
