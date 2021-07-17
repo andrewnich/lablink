@@ -13,7 +13,7 @@ function App() {
     <Router>
       <NavBar />
       <Switch>
-        <Route path='signup'>
+        <Route path='/signup'>
           <SignUp />
         </Route>
         <Route path='/dashboard'>
