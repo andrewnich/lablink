@@ -2,15 +2,21 @@ import json
 
 fp = "../data/labs.json"
 
-def select_lab(labid:int)->dict:
+"""
+Returns lab dictionary of lab where id == lab_id
+"""
+def select_lab(lab_id:int)->dict:
     with open(fp) as labsJson:
         labs = json.load(labsJson)
         labsJson.close()
     for lab in labs["labs"]:
-        if labid == lab["Id"]:
+        if lab_id == lab["Id"]:
             return lab
     return None
 
+"""
+Gets the next step
+"""
 def next_step(answer:str, lab:dict)->dict:
     return lab[answer]
 
