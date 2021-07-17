@@ -66,16 +66,18 @@ const Login = () => {
   return (
   <div>
       <p className={classes.logo}>LabLink</p>
-      <div className={classes.signInContainer}>
-        <p className={classes.signIn}>Sign In</p>
-        <form>
-          <TextField className={classes.textEntry} variant='outlined' label='Email address' name="email" required/>
-          <TextField className={classes.textEntry} variant='outlined' label='Password' type='password' name="password" required/>
-          <a classNames={classes.forgotPassword} href="">Forgot your password?</a>
-          <Button className={classes.button} color="primary" variant="contained" type="submit" fullWidth>Log In</Button>
-        </form>
-        <Button className={classes.button} color="secondary" variant="contained" fullWidth component={Link} to='/signup'>Sign Up</Button>
-      </div>
+      <form>
+        <div className={classes.signInContainer}>
+          <p className={classes.signIn}>Sign In</p>
+          
+            <TextField className={classes.textEntry} variant='outlined' label='Email address' name="email" required/>
+            <TextField className={classes.textEntry} variant='outlined' label='Password' type='password' name="password" required/>
+            <a classNames={classes.forgotPassword} href="">Forgot your password?</a>
+            <Button className={classes.button} color="primary" variant="contained" type="submit" fullWidth>Log In</Button>
+          
+          <Button className={classes.button} color="secondary" variant="contained" fullWidth component={Link} to='/signup'>Sign Up</Button>
+        </div>
+      </form>
   </div>
   );
 };
