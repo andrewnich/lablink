@@ -4,6 +4,8 @@ import os.path
 import shutil
 import hashlib, uuid
 
+fp = "../data/users.json"
+
 def hash_p(password:str)->str:
     pw2 = password.encode("utf-8")
     hashed_password = hashlib.sha512(pw2).hexdigest()
@@ -12,11 +14,7 @@ def hash_p(password:str)->str:
 
 def login(email:str, password:str)->str:
 
-    d = os.getcwd()
-    d = os.path.dirname(d)
-    d = os.path.dirname(d)
-    d = os.path.join(str(d),'hack/lablink/backend/data/','users.json')
-    f = open(d,)
+    f = open(fp)
     data = json.load(f)
     f.close()
 
@@ -35,17 +33,13 @@ def login(email:str, password:str)->str:
     return uid  
 
 
-def logout(uid:str) ->bool:
-
-    return logged_out
+#def logout(uid:str) ->bool:
+#    return logged_out
 
 
 def register(email:str, password:str)->str:
-    d = os.getcwd()
-    d = os.path.dirname(d)
-    d = os.path.dirname(d)
-    d = os.path.join(str(d),'hack/lablink/backend/data/','users.json')
-    f = open(d,)
+    
+    f = open(fp)
     data = json.load(f)
     f.close()
     
@@ -71,12 +65,11 @@ def register(email:str, password:str)->str:
 
         uid = len(data)
 
-        with open(d,'w') as f:
+        with open(fp,'w') as f:
             json.dump(data,f)
 
     return uid
 
 
-def reset(email:str)->bool:
-
-    return password_reset
+#def reset(email:str)->bool:
+#    return password_reset

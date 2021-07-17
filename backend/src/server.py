@@ -55,9 +55,8 @@ def handle_exception(err):
 def server_login():
     '''Login request handler'''
     data = request.get_json()
-    #uid = auth.login(data['email'], data['password'])
-    uid = "FAKEUID"
-    if uid == -1:
+    uid = auth.login(data['email'], data['password'])
+    if uid != -1:
         response = {
             "uid": uid
         }
@@ -66,18 +65,24 @@ def server_login():
     else:
         raise APIAuthError('Incorrect login!')
 
-@APP.route("/auth/logout", methods=['POST'])
-def server_logout():
-    data = request.get_json()
+#@APP.route("/auth/logout", methods=['POST'])
+#def server_logout():
+    #data = request.get_json()
     #response = auth.logout(data['uid'])
-    response = True
-    return dumps(response)
+    #return jsonify(response), 200
 
 @APP.route("/auth/register", methods=['POST'])
 def server_register():
     data = request.get_json()
-    #response = auth.register(data['email'], data['password'])
-    response = "FAKEUID"
+    uid = auth.register(data['email'], data['password'])
+    if uid != -1:
+        response = {
+            "uid": uid
+        }
+        return jsonify(response), 200
+
+    else:
+        raise APIAuthError('Incorrect login!')
     return dumps(response)
 
 #@APP.route("/auth/reset", methods=['POST'])
