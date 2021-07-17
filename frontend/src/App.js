@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import SignUp from './pages/SignUp';
 import QnA from './pages/QnA';
 import LabDemo from './pages/LabDemo';
+import Questionnaire from './pages/Questionnaire';
 
 import NavBar from './components/NavBar';
 
@@ -26,6 +27,9 @@ function App() {
         </Route>
         <Route path='/qna'>
           <QnA />
+        </Route>
+        <Route path='/questionnaire'>
+          <Questionnaire />
         </Route>
         <Route path='/'>
           <Login />
