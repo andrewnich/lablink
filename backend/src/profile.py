@@ -1,4 +1,4 @@
-def display_questions()->json:
+def display_questions()->str:
 
     return question_bank
 
