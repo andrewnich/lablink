@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import SignUp from './pages/SignUp';
+import QnA from './pages/QnA';
 import LabDemo from './pages/LabDemo';
 
 import NavBar from './components/NavBar';
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route path='/dashboard'>
           <Dashboard />
+        </Route>
+        <Route path='/qna'>
+          <QnA />
         </Route>
         <Route path='/'>
           <Login />
