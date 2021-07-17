@@ -99,16 +99,42 @@ def server_register():
 ''' 
 ==================== DASHBOARD ROUTES ==================== 
 '''
-#@APP.route("/dashboard/generatedashboard", methods=['GET'])
+@APP.route("/dashboard/generatedashboard", methods=['GET'])
+def server_generatedashboard():
+    uid = request.args.get('uid')
+    lab_list = dashboard.generated_dashboard(uid)
+    response = {
+        "labs": lab_list,
+        "status": 200
+    }
+    return jsonify(response), 200
 
-#@APP.route("/dashboard/search", methods=['GET'])
+
+@APP.route("/dashboard/search", methods=['GET'])
+def server_search():
+    search_term = request.args.get('search_term')
+    lab_list = dashboard.search(search_term)
+    response = {
+        "labs": lab_list,
+        "status": 200
+    }
+    return jsonify(response), 200
 
 ''' 
 ==================== LAB ROUTES ==================== 
 '''
-#@APP.route("/lab/selectlab", methods=['GET'])
+@APP.route("/lab/selectlab", methods=['GET'])
+def server_selectlab():
+    lab_id = request.args.get('lab_id')
+    lab = lab.select_lab(lab_id)
+    response = {
+        "lab": lab,
+        "status": 200
+    }
+    return jsonify(response), 200
 
-#@APP.route("/lab/next_step", methods=['GET'])
+@APP.route("/lab/next_step", methods=['GET'])
+#def server_nextstep():
 
 #@APP.route("/lab/previous_step", methods=['GET'])
 
