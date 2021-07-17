@@ -61,10 +61,41 @@ const Login = () => {
   const classes = useStyles();
   const history = useHistory();
 
+  // Initialising state variables
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [passwordError, setPasswordError] = React.useState('');
+  const [loggedIn, setLoggedIn] = React.useState(false);
+
+  const submitLogin = async (event) => {
+    event.preventDefault(); // Prevent page reload
+    const response = await fetch('http://localhost:8080/auth/login', {
+      headers : {
+        'Content-type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+    // If bad response
+    if (response.status !== 200) {
+        setPasswordError('Incorrect username or password!');
+        return;
+    }
+    // If good response, following code will execute. Set token, set logged in and go to dashboard
+    const json = await response.json();
+    localStorage.setItem('auth_token', json.uid);
+    setLoggedIn(true);
+
+    history.push('/dashboard');
+  };
+
   return (
     <div>
       <p className={classes.logo}>LabLink</p>
-      <form>
+      <form onSubmit={submitLogin}>
         <div className={classes.signInContainer}>
           <p className={classes.signIn}>Log In</p>
 
@@ -74,6 +105,10 @@ const Login = () => {
             label='Email address'
             name='email'
             required
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            error={passwordError !== ''}
+            helperText={passwordError}
           />
           <TextField
             className={classes.textEntry}
@@ -82,6 +117,10 @@ const Login = () => {
             type='password'
             name='password'
             required
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            error={passwordError !== ''}
+            helperText={passwordError}
           />
           <a classNames={classes.forgotPassword} href=''>
             Forgot your password?
