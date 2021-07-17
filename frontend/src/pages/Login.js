@@ -88,7 +88,6 @@ const Login = () => {
     const json = await response.json();
     localStorage.setItem('auth_token', json.uid);
     setLoggedIn(true);
-
     history.push('/dashboard');
   };
 

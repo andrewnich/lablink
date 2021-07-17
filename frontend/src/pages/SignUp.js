@@ -86,7 +86,7 @@ const Login = () => {
 
     // If good response, set token and logged in status and go to dashboard
     const json = await response.json();
-    localStorage.setItem('auth_token', json.token);
+    localStorage.setItem('auth_token', json.uid);
     setLoggedIn(true);
     history.push('/dashboard');
   }
