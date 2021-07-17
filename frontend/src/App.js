@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import SignUp from './pages/SignUp';
 import QnA from './pages/QnA';
+import LabDemo from './pages/LabDemo';
 
 import NavBar from './components/NavBar';
 
@@ -14,6 +15,9 @@ function App() {
     <Router>
       <NavBar />
       <Switch>
+        <Route exact path='/lab/:labID'>
+          <LabDemo />
+        </Route>
         <Route path='/signup'>
           <SignUp />
         </Route>
