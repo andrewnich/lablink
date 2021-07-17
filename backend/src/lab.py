@@ -2,7 +2,7 @@ import json
 
 fp = "../data/labs.json"
 
-def select_lab(labid:int)->str:
+def select_lab(labid:int)->dict:
     with open(fp) as labsJson:
         labs = json.load(labsJson)
         labsJson.close()
@@ -11,12 +11,12 @@ def select_lab(labid:int)->str:
             return lab
     return None
 
-def next_step(answer:str)->str:
+def next_step(answer:str, lab:dict)->dict:
+    return lab[answer]
 
-    return labnode
+# def previous_step()->str:
 
-def previous_step()->str:
+#     return labnode
 
-    return labnode
-
-print(select_lab(1))
+# print(select_lab(1))
+# print(next_step(("02"), select_lab(1)))
