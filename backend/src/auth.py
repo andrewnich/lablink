@@ -58,12 +58,10 @@ def register(email:str, password:str)->str:
     
 
     if email_exists == False:
-        uid = len(data)
+        uid = len(data["uid"])
         data["uid"][str(uid)] = []
         data["uid"][str(uid)].append(email)
         data["uid"][str(uid)].append(hash_p(password))
-
-        uid = len(data)
 
         with open(fp,'w') as f:
             json.dump(data,f)

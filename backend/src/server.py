@@ -36,18 +36,20 @@ def handle_exception(err):
         message = err.args[0]
     response = {
         "error" : err.description,
-        "message" : message
+        "message" : message,
+        "status" : err.code
     }
-    return jsonify(response), err.code
+    return jsonify(response)
 
 @APP.errorhandler(500)
 def handle_exception(err):
     '''Handler for unknown server errors'''
     response = {
         "error" : "Internal Server Error",
-        "message" : "It appears something went wrong :( If you continue to experience this issue please contact support."
+        "message" : "It appears something went wrong :( If you continue to experience this issue please contact support.",
+        "status": 500
     }
-    return jsonify(response), 500
+    return jsonify(response)
 
 ''' 
 ==================== AUTH ROUTES ==================== 
@@ -60,9 +62,10 @@ def server_login():
     uid = auth.login(data['email'], data['password'])
     if uid != -1:
         response = {
-            "uid": uid
+            "uid": uid,
+            "status": 200
         }
-        return jsonify(response), 200
+        return jsonify(response)
 
     else:
         raise APIAuthError('Incorrect login!')
@@ -79,9 +82,10 @@ def server_register():
     uid = auth.register(data['email'], data['password'])
     if uid != -1:
         response = {
-            "uid": uid
+            "uid": uid,
+            "status": 200
         }
-        return jsonify(response), 200
+        return jsonify(response)
 
     else:
         raise APIAuthError('Incorrect login!')
