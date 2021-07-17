@@ -1,11 +1,11 @@
-def selectlab(labid:str)->json:
+def selectlab(labid:str)->str:
 
     return labjson
 
-def next_step(answer:str)->json:
+def next_step(answer:str)->str:
 
     return labnode
 
-def previous_step()->json:
+def previous_step()->str:
 
     return labnode
