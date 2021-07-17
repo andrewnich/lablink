@@ -1,1 +1,31 @@
-{}
+{
+    "labs": [
+        {
+            "Name": "Baking Soda Experiment",
+            "Id": 1,
+            "Thumbnail": "IMG URL",
+            "Start": {
+                "Question": "What do you want to add",
+                "Video": "YOUTUBE URL",
+                "Options": [
+                    {"Water": "01"},
+                    {"Vinegar": "02"}
+                ]
+            },
+            "01": {
+                "Question": "Adding water",
+                "Video": "YOUTUBE URL",
+                "Options": [
+                    {"Back": "Start"}
+                ]
+            },
+            "02": {
+                "Question": "Adding vinegar",
+                "Video": "YOUTUBE URL",
+                "Options": [
+                    {"Finish": "End"}
+                ]
+            }
+        }
+    ]
+}
