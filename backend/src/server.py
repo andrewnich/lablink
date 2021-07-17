@@ -37,7 +37,7 @@ def handle_exception(err):
         "message" : message,
         "status" : err.code
     }
-    return jsonify(response)
+    return jsonify(response), err.code
 
 @APP.errorhandler(500)
 def handle_exception(err):
@@ -47,7 +47,7 @@ def handle_exception(err):
         "message" : "It appears something went wrong :( If you continue to experience this issue please contact support.",
         "status": 500
     }
-    return jsonify(response)
+    return jsonify(response), 500
 
 ''' 
 ==================== AUTH ROUTES ==================== 
@@ -63,7 +63,7 @@ def server_login():
             "uid": uid,
             "status": 200
         }
-        return jsonify(response)
+        return jsonify(response), 200
 
     else:
         raise APIAuthError('Incorrect login!')
@@ -83,11 +83,10 @@ def server_register():
             "uid": uid,
             "status": 200
         }
-        return jsonify(response)
+        return jsonify(response), 200
 
     else:
         raise APIAuthError('Incorrect login!')
-    return dumps(response)
 
 #@APP.route("/auth/reset", methods=['POST'])
 #def server_reset():
