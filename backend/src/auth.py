@@ -5,28 +5,33 @@ import shutil
 import hashlib, uuid
 
 def hash_p(password:str)->str:
-    salt = uuid.uuid4().hex
-    hashed_password = hashlib.sha512(password + salt).hexdigest()
+    pw2 = password.encode("utf-8")
+    hashed_password = hashlib.sha512(pw2).hexdigest()
     return hashed_password
 
 
 def login(email:str, password:str)->str:
 
     d = os.getcwd()
-    d = os.path.join(d,'/src/data.json')
+    d = os.path.dirname(d)
+    d = os.path.dirname(d)
+    d = os.path.join(str(d),'hack/lablink/backend/data/','users.json')
     f = open(d,)
     data = json.load(f)
-    
+    f.close()
+
     hash_to_check = hash_p(password)
 
-    uid = "0"
-    for i in range(0,len(data)):
-        if data[i][0] == email:
-            if data[i][1] == hash_to_check:
+    uid = "-1"
+    for i in range(0,len(data["uid"].keys())):
+        if data["uid"][str(i)][0] == email:
+            if data["uid"][str(i)][1] == hash_to_check:
                 uid = i
                 break
     
-    f.close()
+    
+    print("Done")
+    print(uid)
     return uid  
 
 
@@ -37,32 +42,37 @@ def logout(uid:str) ->bool:
 
 def register(email:str, password:str)->str:
     d = os.getcwd()
-    d = os.path.join(d,'/src/data.json')
+    d = os.path.dirname(d)
+    d = os.path.dirname(d)
+    d = os.path.join(str(d),'hack/lablink/backend/data/','users.json')
     f = open(d,)
     data = json.load(f)
     f.close()
+    
+    #with open(d) as f:
+    #    data = json.load(f)
 
     email_exists = False
 
-    for i in range(0,len(data)):
-        if data[i][0] == email:
+    for i in range(0,len(data["uid"].keys())):
+        print(data["uid"][str(i)][0])
+        if data["uid"][str(i)][0] == email:
             #Email already in Database
             email_exists = True
-            uid = i
+            uid = -1
             break
     
+
     if email_exists == False:
-        uid = len(data)+1
-        data[uid] = []
-        data[uid][0]=email
-        data[uid][1]=hash_p(password)
+        uid = len(data)
+        data["uid"][str(uid)] = []
+        data["uid"][str(uid)].append(email)
+        data["uid"][str(uid)].append(hash_p(password))
 
         uid = len(data)
 
-        f = open(d,'w')
-        f.write(data)
-        f.close()
-
+        with open(d,'w') as f:
+            json.dump(data,f)
 
     return uid
 
