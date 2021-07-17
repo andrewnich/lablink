@@ -62,9 +62,6 @@ const Login = () => {
   const classes = useStyles();
   const history = useHistory();
 
-  const handleSignUpClick = () => {
-    history.push('/signup')
-  }
   
   return (
   <div>
@@ -77,7 +74,7 @@ const Login = () => {
           <a classNames={classes.forgotPassword} href="">Forgot your password?</a>
           <Button className={classes.button} color="primary" variant="contained" type="submit" fullWidth>Log In</Button>
         </form>
-        <Button className={classes.button} color="secondary" variant="contained" fullWidth onClick={handleSignUpClick}>Sign Up</Button>
+        <Button className={classes.button} color="secondary" variant="contained" fullWidth component={Link} to='/signup'>Sign Up</Button>
       </div>
   </div>
   );
