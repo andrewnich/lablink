@@ -11,14 +11,14 @@ const useStyles = makeStyles(() => ({
     textAlign: 'center'
   },
 
-  signIn: {
+  signUp: {
     display: 'block',
     fontSize: '30px',
     padding: '0px',
     margin: '20px',
   },
 
-  signInContainer: {
+  signUpContainer: {
     display: 'flex',
     margin: 'auto',
     flexDirection: 'column',
@@ -29,14 +29,6 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
   },
 
-  signInBody: {
-    color: 'red',
-  },
-
-  signInLabel: {
-    textAlign: 'left',
-  },
-
   textEntry: {
     margin: '10px',
   },
@@ -45,10 +37,6 @@ const useStyles = makeStyles(() => ({
     textAlign: 'right',
     fontSize: '10px',
     display: 'block',
-  },
-
-  horizontalFlexContainer: {
-    display: 'flex',
   },
 
   button: {
@@ -65,8 +53,8 @@ const Login = () => {
     <div>
       <p className={classes.logo}>LabLink</p>
       <form>
-        <div className={classes.signInContainer}>
-          <p className={classes.signIn}>Log In</p>
+        <div className={classes.signUpContainer}>
+          <p className={classes.signUp}>Sign Up</p>
 
           <TextField
             className={classes.textEntry}
@@ -83,9 +71,14 @@ const Login = () => {
             name='password'
             required
           />
-          <a classNames={classes.forgotPassword} href=''>
-            Forgot your password?
-          </a>
+          <TextField
+            className={classes.textEntry}
+            variant='outlined'
+            label='Re-enter password'
+            type='password'
+            name='reenterPassword'
+            required
+          />
           <Button
             className={classes.button}
             color='primary'
@@ -93,10 +86,10 @@ const Login = () => {
             type='submit'
             fullWidth
           >
-            Log In
+            Sign Up
           </Button>
 
-          <p>Don't have an account?</p>
+          <p>Already got an account?</p>
 
           <Button
             className={classes.button}
@@ -104,10 +97,11 @@ const Login = () => {
             variant='contained'
             fullWidth
             component={Link}
-            to='/signup'
+            to='/'
           >
-            Sign Up
+            Log In
           </Button>
+
         </div>
       </form>
     </div>
