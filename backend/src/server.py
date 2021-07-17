@@ -60,7 +60,7 @@ def server_login():
     '''Login request handler'''
     data = request.get_json()
     uid = auth.login(data['email'], data['password'])
-    if uid != -1:
+    if uid != "-1":
         response = {
             "uid": uid,
             "status": 200
@@ -80,7 +80,7 @@ def server_login():
 def server_register():
     data = request.get_json()
     uid = auth.register(data['email'], data['password'])
-    if uid != -1:
+    if uid != "-1":
         response = {
             "uid": uid,
             "status": 200
