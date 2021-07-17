@@ -6,9 +6,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
+import { useHistory, Link } from 'react-router-dom';
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 300,
+    marginBottom: '20px',
   },
   media: {
     height: 140,
@@ -17,10 +20,15 @@ const useStyles = makeStyles({
 
 const LabDemoCard = (props) => {
   const classes = useStyles();
+  const history = useHistory();
+
+  const handleLabCardClick = () => {
+    history.push(`/lab/${props.id}`);
+  };
 
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea onClick={handleLabCardClick}>
         <CardMedia
           className={classes.media}
           image={props.image}
