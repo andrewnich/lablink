@@ -49,10 +49,52 @@ const Login = () => {
   const classes = useStyles();
   const history = useHistory();
 
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+  const [passwordError, setPasswordError] = React.useState('');
+  const [emailError, setEmailError] = React.useState('');
+  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [confirmPassword, setConfirmPassword] = React.useState('');
+
+  const submitSignUp = async (event) => {
+    event.preventDefault(); // Prevents form from being reloaded upon submit
+
+    // Test if password and confirm password 
+    if (password !== confirmPassword) {
+      setPasswordError('Please make sure your passwords match');
+      return;
+    }
+
+    // If function reaches this point, entered passwords were identical
+    // Send this data to the web server
+    const response = await fetch('http://localhost:8080/auth/register', {
+      headers: {
+        'Content-type': 'application/json',
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+
+    // If bad response
+    if (response.status !== 200) {
+      setEmailError('Email already in use');
+      return;
+    }
+
+    // If good response, set token and logged in status and go to dashboard
+    const json = await response.json();
+    localStorage.setItem('auth_token', json.uid);
+    setLoggedIn(true);
+    history.push('/questionnaire');
+  }
+
   return (
     <div>
       <p className={classes.logo}>LabLink</p>
-      <form>
+      <form onSubmit={submitSignUp}>
         <div className={classes.signUpContainer}>
           <p className={classes.signUp}>Sign Up</p>
 
@@ -62,6 +104,10 @@ const Login = () => {
             label='Email address'
             name='email'
             required
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            error={emailError !== ''}
+            helperText={emailError}
           />
           <TextField
             className={classes.textEntry}
@@ -70,6 +116,13 @@ const Login = () => {
             type='password'
             name='password'
             required
+            value={password}
+            onChange={(event) => {
+              setPassword(event.target.value);
+              setPasswordError('')
+            }}
+            error={passwordError !== ''}
+            helperText={passwordError}
           />
           <TextField
             className={classes.textEntry}
@@ -78,6 +131,13 @@ const Login = () => {
             type='password'
             name='reenterPassword'
             required
+            value={confirmPassword}
+            onChange={(event) => {
+              setConfirmPassword(event.target.value)
+              setPasswordError('');
+            }}
+            error={passwordError !== ''}
+            helperText={passwordError}
           />
           <Button
             className={classes.button}

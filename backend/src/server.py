@@ -6,6 +6,7 @@ lab and profile.
 '''
 from json import dumps
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 import auth
 import dashboard
@@ -13,6 +14,7 @@ import lab
 import profile
 
 APP = Flask(__name__)
+CORS(APP)
 
 '''
 ==================== ERROR HANDLING ====================
