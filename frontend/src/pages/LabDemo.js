@@ -16,16 +16,24 @@ const LabDemo = () => {
   const [labData, setLabData] = React.useState({});
   React.useEffect(() => {
     const fetchData = async () => {
+      // payload
       // Retrieve lab data from server
-      const response = await fetch('http://localhost:8080/lab/selectlab', {
-        headers: {
-          'Content-type': 'application/json',
-        },
-        method: 'GET',
-      });
+      console.log('fetching lab!!!');
+      const response = await fetch(
+        `http://localhost:8080/lab/selectlab?lab_id=${labID}`,
+        {
+          headers: {
+            'Content-type': 'application/json',
+          },
+          method: 'GET',
+        }
+      );
       const json = await response.json();
-      console.log(json);
+      const labInfo = json.lab;
+      console.log(labInfo);
+      //console.log('asdf!!!');
       //setLabData(currLabs);
+      setLabData(labInfo);
     };
     fetchData();
   }, []);
@@ -54,7 +62,7 @@ const LabDemo = () => {
         className='main'
         style={labMainStyle}
       >
-        <h1>This is lab demo with id {labID}</h1>
+        <h1>{labData.Name}</h1>
         <LabChoiceDialog open={labChoiceOpen} onClose={handleLabChoiceClose} />
         <YouTube videoId={labID} onEnd={handleVideoEnd} />
         <Grid container justify='center' direction='row'>
