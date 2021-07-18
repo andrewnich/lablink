@@ -27,7 +27,7 @@ const LabDemoCard = (props) => {
   };
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} style={{ width: '270px' }}>
       <CardActionArea onClick={handleLabCardClick}>
         <CardMedia
           className={classes.media}

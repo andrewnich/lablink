@@ -13,6 +13,23 @@ const LabDemo = () => {
   // state for lab choice dialog
   const [labChoiceOpen, setLabChoiceOpen] = React.useState(false);
 
+  const [labData, setLabData] = React.useState({});
+  React.useEffect(() => {
+    const fetchData = async () => {
+      // Retrieve lab data from server
+      const response = await fetch('http://localhost:8080/lab/selectlab', {
+        headers: {
+          'Content-type': 'application/json',
+        },
+        method: 'GET',
+      });
+      const json = await response.json();
+      console.log(json);
+      //setLabData(currLabs);
+    };
+    fetchData();
+  }, []);
+
   const handleVideoEnd = () => {
     console.log('video ended!');
     setLabChoiceOpen(true);
@@ -39,7 +56,7 @@ const LabDemo = () => {
       >
         <h1>This is lab demo with id {labID}</h1>
         <LabChoiceDialog open={labChoiceOpen} onClose={handleLabChoiceClose} />
-        <YouTube videoId={'dQw4w9WgXcQ'} onEnd={handleVideoEnd} />
+        <YouTube videoId={labID} onEnd={handleVideoEnd} />
         <Grid container justify='center' direction='row'>
           <Button variant='contained' color='secondary'>
             Go back a step
