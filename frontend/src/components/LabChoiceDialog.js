@@ -8,7 +8,6 @@ const buttonStyle = {
 
 const LabChoiceDialog = (props) => {
   const { onClose, open } = props;
-
   return (
     <Dialog onClose={onClose} aria-labelledby='simple-dialog-title' open={open}>
       <DialogTitle id='simple-dialog-title'>
@@ -20,6 +19,7 @@ const LabChoiceDialog = (props) => {
           fullWidth
           color='primary'
           style={buttonStyle}
+          onClick={props.addAcid()}
         >
           Add acid
         </Button>
@@ -28,6 +28,7 @@ const LabChoiceDialog = (props) => {
           fullWidth
           color='primary'
           style={buttonStyle}
+          onClick={props.addBase()}
         >
           Add base
         </Button>
@@ -36,6 +37,7 @@ const LabChoiceDialog = (props) => {
           fullWidth
           color='primary'
           style={buttonStyle}
+          onClick={props.addWater()}
         >
           Add water
         </Button>

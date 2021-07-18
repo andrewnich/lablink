@@ -38,6 +38,28 @@ const LabDemo = () => {
     fetchData();
   }, []);
 
+  // lab choice options
+  const addAcid = () => {
+    setLabData({
+      id: 'zJjCKzwvUPE',
+      Name: 'Adding acid',
+    });
+  };
+
+  const addBase = () => {
+    setLabData({
+      id: '_vhSfqeIYwM',
+      Name: 'Adding base',
+    });
+  };
+
+  const addWater = () => {
+    setLabData({
+      id: '5L16iEb_3RI',
+      Name: 'Adding water',
+    });
+  };
+
   const handleVideoEnd = () => {
     console.log('video ended!');
     setLabChoiceOpen(true);
@@ -66,9 +88,12 @@ const LabDemo = () => {
         <LabChoiceDialog
           open={labChoiceOpen}
           onClose={handleLabChoiceClose}
-          options={labData.Start}
+          addAcid={() => addAcid}
+          addWater={() => addWater}
+          addBase={() => addBase}
+          //options={labData.Start}
         />
-        <YouTube videoId={labID} onEnd={handleVideoEnd} />
+        <YouTube videoId={labData.id} onEnd={handleVideoEnd} />
         <Grid container justify='center' direction='row'>
           <Button variant='contained' color='secondary'>
             Go back a step
