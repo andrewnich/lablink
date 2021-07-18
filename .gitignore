@@ -1,2 +1,5 @@
 # pycache
 /backend/src/__pycache__
+
+# backend data
+/backend/data
