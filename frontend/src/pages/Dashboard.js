@@ -4,6 +4,7 @@ import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 
 import LabDemoCard from '../components/LabDemoCard';
+import NavBar from '../components/NavBar';
 
 // temporary videos array
 const videos = [
@@ -38,20 +39,27 @@ const videosBox = {
 
 const Dashboard = () => {
   return (
-    <Container component='main' maxWidth='md' className='main'>
-      <TextField
-        id='outlined-basic'
-        label='Search for lab'
-        variant='outlined'
-        marginBottom='20px'
-        fullWidth
-      />
-      <div style={videosBox}>
-        {videos.map((video) => (
-          <LabDemoCard title={video.title} image={video.image} id={video.id} />
-        ))}
-      </div>
-    </Container>
+    <div>
+      <NavBar />
+      <Container component='main' maxWidth='md' className='main'>
+        <TextField
+          id='outlined-basic'
+          label='Search for lab'
+          variant='outlined'
+          marginBottom='20px'
+          fullWidth
+        />
+        <div style={videosBox}>
+          {videos.map((video) => (
+            <LabDemoCard
+              title={video.title}
+              image={video.image}
+              id={video.id}
+            />
+          ))}
+        </div>
+      </Container>
+    </div>
   );
 };
 
