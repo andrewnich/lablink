@@ -63,7 +63,11 @@ const LabDemo = () => {
         style={labMainStyle}
       >
         <h1>{labData.Name}</h1>
-        <LabChoiceDialog open={labChoiceOpen} onClose={handleLabChoiceClose} />
+        <LabChoiceDialog
+          open={labChoiceOpen}
+          onClose={handleLabChoiceClose}
+          options={labData.Start}
+        />
         <YouTube videoId={labID} onEnd={handleVideoEnd} />
         <Grid container justify='center' direction='row'>
           <Button variant='contained' color='secondary'>
