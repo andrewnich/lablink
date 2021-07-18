@@ -4,6 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import logo from './../images/lablinkTransparentWhite.png'
 
 import { useHistory, Link, useParams } from 'react-router-dom';
 
@@ -25,14 +26,13 @@ const NavBar = () => {
   return (
     <AppBar position='relative' style={{ marginBottom: '20px' }}>
       <Toolbar>
-        <h1
+        <img 
           style={{
             cursor: 'pointer',
           }}
           onClick={handleLogoClick}
-        >
-          LabLink
-        </h1>
+          src={logo}
+        />
         <div style={{ flexGrow: '1' }} />
         <IconButton
           color='primary'
