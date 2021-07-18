@@ -9,6 +9,18 @@ const buttonStyle = {
 const LabChoiceDialog = (props) => {
   const { onClose, open } = props;
 
+  const addAcid = () => {
+    history.push(`/lab/${props.id}`);
+  };
+
+  const addBase = () => {
+    history.push(`/lab/${props.id}`);
+  };
+
+  const addWater = () => {
+    history.push(`/lab/${props.id}`);
+  };
+
   return (
     <Dialog onClose={onClose} aria-labelledby='simple-dialog-title' open={open}>
       <DialogTitle id='simple-dialog-title'>
@@ -20,6 +32,7 @@ const LabChoiceDialog = (props) => {
           fullWidth
           color='primary'
           style={buttonStyle}
+          onClick={addAcid}
         >
           Add acid
         </Button>
@@ -28,6 +41,7 @@ const LabChoiceDialog = (props) => {
           fullWidth
           color='primary'
           style={buttonStyle}
+          onClick={addBase}
         >
           Add base
         </Button>
@@ -36,6 +50,7 @@ const LabChoiceDialog = (props) => {
           fullWidth
           color='primary'
           style={buttonStyle}
+          onClick={addWater}
         >
           Add water
         </Button>
