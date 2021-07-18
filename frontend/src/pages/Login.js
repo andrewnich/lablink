@@ -3,12 +3,20 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import { FormHelperText } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import logo from './../images/lablinkTransparentBlue.png'
 
 import { useHistory, Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
-  logo: {
-    textAlign: 'center'
+  logoStyle: {
+    display: 'flex',
+    margin: 'auto',
+    flexDirection: 'column',
+    width: '20%',
+    padding: 'px',
+    borderRadius: '5px',
+    alignItems: 'center',
+    marginBottom: '2vh' 
   },
 
   signIn: {
@@ -95,7 +103,11 @@ const Login = () => {
 
   return (
     <div>
-      <p className={classes.logo}>LabLink</p>
+      <img 
+        src={logo} 
+        className={classes.logoStyle}
+      />
+      {/* <p className={classes.logo}>LabLink</p> */}
       <form onSubmit={submitLogin}>
         <div className={classes.signInContainer}>
           <p className={classes.signIn}>Log In</p>

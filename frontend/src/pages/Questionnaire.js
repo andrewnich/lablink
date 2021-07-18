@@ -14,6 +14,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import { useHistory, Link } from 'react-router-dom';
 
+import NavBar from '../components/NavBar';
+
 const Questionnaire = () => {
   const history = useHistory();
   const [topicsState, setTopicsState] = React.useState({
@@ -55,98 +57,101 @@ const Questionnaire = () => {
   };
 
   return (
-    <Container
-      component='main'
-      maxWidth='md'
-      className='main'
-      style={{ marginTop: '15vh' }}
-    >
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <Typography variant='h4' gutterBottom>
-          Help us help you by answering a couple questions...
-        </Typography>
-        <Typography variant='h5'>
-          What areas of science are you interested in?
-        </Typography>
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={topicsState.biology}
-                onChange={handleTopicChange}
-                name='biology'
-              />
-            }
-            label='Biology'
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={topicsState.chemistry}
-                onChange={handleTopicChange}
-                name='chemistry'
-              />
-            }
-            label='Chemistry'
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={topicsState.physics}
-                onChange={handleTopicChange}
-                name='physics'
-              />
-            }
-            label='Physics'
-          />
-        </FormGroup>
-        <Typography variant='h5'>Are you hard of hearing?</Typography>
-        <RadioGroup
-          aria-label='hardofhearing'
-          name='hardofhearing1'
-          value={hearing}
-          onChange={hearingChange}
-        >
-          <FormControlLabel value='yes' control={<Radio />} label='Yes' />
-          <FormControlLabel value='no' control={<Radio />} label='No' />
-        </RadioGroup>
-        <Typography variant='h5'>Is English your first language?</Typography>
-        <RadioGroup
-          aria-label='isenglishfirstlanguage'
-          name='isenglishfirstlanguage1'
-          value={english}
-          onChange={englishChange}
-        >
-          <FormControlLabel value='yes' control={<Radio />} label='Yes' />
-          <FormControlLabel value='no' control={<Radio />} label='No' />
-        </RadioGroup>
-        <Typography variant='h5'>
-          What is the highest level of school you have completed?
-        </Typography>
-        <Select
-          labelId='demo-simple-select-label'
-          id='demo-simple-select'
-          value={year}
-          onChange={yearChange}
-        >
-          <MenuItem value={1}>Year 1</MenuItem>
-          <MenuItem value={2}>Year 2</MenuItem>
-          <MenuItem value={3}>Year 3</MenuItem>
-          <MenuItem value={4}>Year 4</MenuItem>
-          <MenuItem value={5}>Year 5</MenuItem>
-          <MenuItem value={6}>Year 6</MenuItem>
-          <MenuItem value={7}>Year 7</MenuItem>
-          <MenuItem value={8}>Year 8</MenuItem>
-          <MenuItem value={9}>Year 9</MenuItem>
-          <MenuItem value={10}>Year 10</MenuItem>
-          <MenuItem value={11}>Year 11</MenuItem>
-          <MenuItem value={12}>Year 12</MenuItem>
-        </Select>
-        <Button onClick={handleSubmit} color='primary' variant='contained'>
-          Submit
-        </Button>
-      </div>
-    </Container>
+    <div>
+      <NavBar />
+      <Container
+        component='main'
+        maxWidth='md'
+        className='main'
+        // style={{ marginTop: '15vh' }}
+      >
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <Typography variant='h4' gutterBottom>
+            Help us help you by answering a couple questions...
+          </Typography>
+          <Typography variant='h5'>
+            What areas of science are you interested in?
+          </Typography>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={topicsState.biology}
+                  onChange={handleTopicChange}
+                  name='biology'
+                />
+              }
+              label='Biology'
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={topicsState.chemistry}
+                  onChange={handleTopicChange}
+                  name='chemistry'
+                />
+              }
+              label='Chemistry'
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={topicsState.physics}
+                  onChange={handleTopicChange}
+                  name='physics'
+                />
+              }
+              label='Physics'
+            />
+          </FormGroup>
+          <Typography variant='h5'>Are you hard of hearing?</Typography>
+          <RadioGroup
+            aria-label='hardofhearing'
+            name='hardofhearing1'
+            value={hearing}
+            onChange={hearingChange}
+          >
+            <FormControlLabel value='yes' control={<Radio />} label='Yes' />
+            <FormControlLabel value='no' control={<Radio />} label='No' />
+          </RadioGroup>
+          <Typography variant='h5'>Is English your first language?</Typography>
+          <RadioGroup
+            aria-label='isenglishfirstlanguage'
+            name='isenglishfirstlanguage1'
+            value={english}
+            onChange={englishChange}
+          >
+            <FormControlLabel value='yes' control={<Radio />} label='Yes' />
+            <FormControlLabel value='no' control={<Radio />} label='No' />
+          </RadioGroup>
+          <Typography variant='h5'>
+            What is the highest level of school you have completed?
+          </Typography>
+          <Select
+            labelId='demo-simple-select-label'
+            id='demo-simple-select'
+            value={year}
+            onChange={yearChange}
+          >
+            <MenuItem value={1}>Year 1</MenuItem>
+            <MenuItem value={2}>Year 2</MenuItem>
+            <MenuItem value={3}>Year 3</MenuItem>
+            <MenuItem value={4}>Year 4</MenuItem>
+            <MenuItem value={5}>Year 5</MenuItem>
+            <MenuItem value={6}>Year 6</MenuItem>
+            <MenuItem value={7}>Year 7</MenuItem>
+            <MenuItem value={8}>Year 8</MenuItem>
+            <MenuItem value={9}>Year 9</MenuItem>
+            <MenuItem value={10}>Year 10</MenuItem>
+            <MenuItem value={11}>Year 11</MenuItem>
+            <MenuItem value={12}>Year 12</MenuItem>
+          </Select>
+          <Button onClick={handleSubmit} color='primary' variant='contained'>
+            Submit
+          </Button>
+        </div>
+      </Container>
+    </div>
   );
 };
 
