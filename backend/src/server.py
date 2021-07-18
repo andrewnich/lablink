@@ -136,7 +136,14 @@ def server_selectlab():
 #@APP.route("/lab/next_step", methods=['GET'])
 #def server_nextstep():
 
-#@APP.route("/lab/previous_step", methods=['GET'])
+@APP.route("/lab/previous_step", methods=['GET'])
+def server_previous_step():
+    lab_info = lab.select_lab("NSJ4cESNQfE")
+    response = {
+        "lab": lab_info,
+        "status": 200
+    }
+    return jsonify(response), 200
 
 ''' 
 ==================== PROFILE ROUTES ==================== 
