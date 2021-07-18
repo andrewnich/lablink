@@ -10,15 +10,15 @@ const LabChoiceDialog = (props) => {
   const { onClose, open } = props;
 
   const addAcid = () => {
-    history.push(`/lab/${props.id}`);
+    //history.push(`/lab/${props.id}`);
   };
 
   const addBase = () => {
-    history.push(`/lab/${props.id}`);
+    //history.push(`/lab/${props.id}`);
   };
 
   const addWater = () => {
-    history.push(`/lab/${props.id}`);
+    //history.push(`/lab/${props.id}`);
   };
 
   return (
