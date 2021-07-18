@@ -55,7 +55,12 @@ const Questionnaire = () => {
   };
 
   return (
-    <Container component='main' maxWidth='md' className='main'>
+    <Container
+      component='main'
+      maxWidth='md'
+      className='main'
+      style={{ marginTop: '15vh' }}
+    >
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         <Typography variant='h4' gutterBottom>
           Help us help you by answering a couple questions...

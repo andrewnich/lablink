@@ -5,7 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory, Link, useParams } from 'react-router-dom';
 
 const NavBar = () => {
   const history = useHistory();
@@ -13,6 +13,15 @@ const NavBar = () => {
     history.push('/dashboard');
   };
   const handleProfileClick = () => {};
+  // conditional rendering stuff
+  //localStorage.getItem('auth_token');
+  /*
+  if (!localStorage.getItem('auth_token')) {
+    return <div></div>;
+  }
+  */
+  const { currRoute } = useParams();
+  console.log(currRoute);
   return (
     <AppBar position='relative' style={{ marginBottom: '20px' }}>
       <Toolbar>
