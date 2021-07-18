@@ -126,9 +126,9 @@ def server_search():
 @APP.route("/lab/selectlab", methods=['GET'])
 def server_selectlab():
     lab_id = request.args.get('lab_id')
-    lab = lab.select_lab(lab_id)
+    labInfo = lab.select_lab(lab_id)
     response = {
-        "lab": lab,
+        "lab": labInfo,
         "status": 200
     }
     return jsonify(response), 200
