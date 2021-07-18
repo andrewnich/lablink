@@ -38,6 +38,29 @@ const videosBox = {
 };
 
 const Dashboard = () => {
+  const [labs, setLabs] = React.useState([]);
+  React.useEffect(() => {
+    const fetchData = async () => {
+      // Retrieve dashboard labs from server
+      const response = await fetch(
+        'http://localhost:8080/dashboard/generatedashboard',
+        {
+          headers: {
+            'Content-type': 'application/json',
+          },
+          method: 'GET',
+        }
+      );
+      const json = await response.json();
+      const currLabs = [];
+      for (let i = 0; i < json.labs.length; i += 1) {
+        currLabs.push(json.labs[i]);
+      }
+      //console.log(currLabs);
+      setLabs(currLabs);
+    };
+    fetchData();
+  }, []);
   return (
     <div>
       <NavBar />
@@ -50,11 +73,11 @@ const Dashboard = () => {
           fullWidth
         />
         <div style={videosBox}>
-          {videos.map((video) => (
+          {labs.map((lab) => (
             <LabDemoCard
-              title={video.title}
-              image={video.image}
-              id={video.id}
+              title={lab.Name}
+              image={`https://img.youtube.com/vi/${lab.Video}/0.jpg`}
+              id={lab.Video}
             />
           ))}
         </div>
