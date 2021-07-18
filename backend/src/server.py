@@ -133,7 +133,7 @@ def server_selectlab():
     }
     return jsonify(response), 200
 
-@APP.route("/lab/next_step", methods=['GET'])
+#@APP.route("/lab/next_step", methods=['GET'])
 #def server_nextstep():
 
 #@APP.route("/lab/previous_step", methods=['GET'])
